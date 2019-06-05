@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 
-class FF_wave9:
+class FF_wave:
 
     def __init__(self, fname):
         self._fname = fname
