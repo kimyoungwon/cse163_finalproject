@@ -41,3 +41,12 @@ def gender_response(data):
     Add gender response to the dataset in order to make further computation
     """
     return data['gender'] = data.apply(lambda row: label(row), axis=1)
+
+
+def avg_subscale(data, gender, category, num_col):
+    # category can only be "del" or "agg"
+    # gender can only be "m"/"f"
+    col_list = make_colnames(gender, category, num_col)
+    new_col = gender + '_' + category + '_sum' 
+    data[new_col] = data[col_list].mean(axis=1, skipna=True)
+    return data

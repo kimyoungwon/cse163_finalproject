@@ -1,4 +1,4 @@
-# This file is the cleaning process of the data
+# This class constructs a class from the FF_allwaves file
 from utils import make_colnames, gender_label
 import pandas as pd
 import numpy as np
@@ -50,5 +50,15 @@ class FF_wave9:
         """
         self._df['gender'] = self._df.apply(lambda row:
                                             gender_label(row), axis=1)
+        return self._df
+
+    def avg_subscale(self, gender, category, num_col):
+        """
+        Category can only be "del" or "agg"
+        Gender can only be "m"/"f"
+        """
+        col_list = make_colnames(gender, category, num_col)
+        new_col = gender + '_' + category + '_avg'
+        self._df[new_col] = self._df[col_list].mean(axis=1, skipna=True)
         return self._df
 
