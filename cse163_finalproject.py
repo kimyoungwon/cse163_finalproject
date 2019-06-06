@@ -79,17 +79,16 @@ def fit_and_predict_ppvt(data):
 ################################################################################
 
 def main():
-    data = FF_wave('FF_allwaves_2019.csv')
     interest_col = ['m5k2a', 'm5k2b', 'm5k2c', 'm5k2d', 'f5k2a', 'f5k2b',
                     'f5k2c', 'f5k2d', 'ch5ppvtss']
+    data = FF_wave('FF_allwaves_2019.csv', interest_col)
     new_colnames = make_colnames('m', 'agg', 4) + make_colnames('f', 'agg', 4)+ ['ppvt_ss']
-    data.cleaning_data(interest_col)
     data.rename_col(new_colnames)
     data.fill_nas([-6, -3, -9, -5, -1, -2])
     data.gender_response()
     data.avg_subscale('m', 'agg', 4)
     filtered_df = data.avg_subscale('f', 'agg', 4)
-    #print(filtered_df.head())
+    print(filtered_df.head())
 
 if __name__ == "__main__":
     main()

@@ -6,14 +6,10 @@ import numpy as np
 
 class FF_wave:
 
-    def __init__(self, fname):
+    def __init__(self, fname, col_names):
         self._fname = fname
-        self._df = pd.read_csv(fname)
+        self._df = pd.read_csv(fname, usecols=col_names)
         self._shape = self._df.shape
-
-    def cleaning_data(self, col_names):
-        self._df = self._df[col_names]
-        return self._df
 
     def rename_col(self, new_col):
         """
