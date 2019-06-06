@@ -6,16 +6,16 @@ import seaborn as sns
 import numpy as np
 
 from sklearn.model_selection import train_test_split
-from sklearn.tree import LinearRegression
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
-from cleaning.py import FF_wave
+from cleaning import FF_wave
 from utils import make_colnames
 
 ################################################################################
 # Step 1: Read and clean .......data set.
 ################################################################################
-
+"""
 def read_csv(path):
     '''
     Reads the CSV file at path, and returns a dataframe.
@@ -33,7 +33,7 @@ def bar_grapgh(dt, variable):
 
 def scatter_plot(dt, variable1, variable2):
     return
-
+"""
 ################################################################################
 # Step 3: Machine Learning Model
 ################################################################################
@@ -89,6 +89,7 @@ def main():
     data.gender_response()
     data.avg_subscale('m', 'agg', 4)
     filtered_df = data.avg_subscale('f', 'agg', 4)
+    #print(filtered_df.head())
 
 if __name__ == "__main__":
     main()
