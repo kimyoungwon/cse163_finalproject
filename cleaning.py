@@ -30,17 +30,6 @@ class FF_wave:
         self._df = self._df.rename(columns=column_dict)
         return self._df
 
-    def filter_data(self, col, col_min, col_max):
-        """
-        Takes in a column in interest, the min and max values of the column,
-        We assume the survey skip the whole section,
-        so we only need to filter by one column.
-        Returns a filtered dataset.
-        """
-        filtered_d = self._df[(self._df[col] >= col_min) &
-                              (self._df[col] <= col_max)]
-        return filtered_d
-
     def fill_nas(self, values):
         """
         Takes in a list of values that we view as NaNs (e.g. -9) and a data
