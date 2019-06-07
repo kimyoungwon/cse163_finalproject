@@ -50,3 +50,7 @@ def avg_subscale(data, gender, category, num_col):
     new_col = gender + '_' + category + '_sum' 
     data[new_col] = data[col_list].mean(axis=1, skipna=True)
     return data
+
+def replacement(data, col, to_replace, value):
+    data[col] = data[col].replace(to_replace, value)
+    return data
